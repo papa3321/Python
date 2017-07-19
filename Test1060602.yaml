@@ -1,0 +1,24 @@
+# Simple tests to verify things work against a live REST service that returns JSON.. I picked github
+---
+- config:
+  - testset: "Simple github.com API Test"
+- test:
+  - name: "Test with successful validations"
+#  - url: "/search/users?q=jewzaam"
+  - url: "/javadump?a=b"
+  - validators: # operator is applied as: <actual> <operator> <expected>
+     - compare: {jsonpath_mini: "queryString.a",     comparator: "eq",      expected: b}
+     - compare: {jsonpath_mini: "queryString.c",     comparator: "eq",      expected: d}
+#     - compare: {jsonpath_mini: "total_count",     comparator: "ge",     expected: 1}
+#     - compare: {jsonpath_mini: "total_count",     comparator: "gt",     expected: 0}
+#     - compare: {jsonpath_mini: "total_count",     comparator: "eq",     expected: 1} # default operator of "eq"
+#     - compare: {jsonpath_mini: "items",           comparator: "count_eq",  expected: 1}
+#     - compare: {jsonpath_mini: "items.0.login",   comparator: "eq",     expected: "jewzaam"}
+#     - compare: {jsonpath_mini: "items.0.id",      comparator: "gt",     expected: 0}
+#     - extract_test: {jsonpath_mini: "queryString",  test: "a=b"}
+#- test:
+#  - name: "Test with validations that will fail"
+#  - url: "/search/users?q=svanoort"
+#  - group: "Failure"
+#  - validators:
+#     - compare: {jsonpath_mini: "total_count", comparator: "eq", expected: 0}

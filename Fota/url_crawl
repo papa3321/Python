@@ -1,0 +1,16 @@
+import urllib2
+from sgmllib import SGMLParser
+
+class WeatherList(SGMLParser):
+    is_td = ""
+    name = []
+
+    def start_td(self, attrs):
+        self.pre = 1
+
+    def end_td(self):
+        self.is_td = ""
+
+    def handle_data(self, text):
+        if self.is_td:
+            self.name.append(text)
